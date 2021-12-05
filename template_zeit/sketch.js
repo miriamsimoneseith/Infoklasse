@@ -58,89 +58,40 @@
 // var fadeAmount = 1
 
 function setup() {
-
+  colorMode(RGB)
   createCanvas(800, 800);
-  stroke(255, 204, 0, 10);   
   strokeWeight(2);
   noFill();
   background('black');
   translate(0, 0);
   rectMode(CENTER);
   angleMode(DEGREES);
-  // fade = 0
-
-
 }
 
+function drawRectangle(tick, maxTick, size) {
+
+  push();
+  if (tick < maxTick/2) {
+    rgb = (tick * 510) / maxTick;
+  } else {
+    rgb = ((maxTick - tick) * 510) / maxTick;
+  }
+  stroke(rgb, 255-rgb, rgb);
+  translate(width / 2, height / 2);
+  rotate(tick * 6);
+  rectMode(CENTER);
+  rect(0, 0, size, size);
+  pop();
+}
 
 function draw() {
   var now = clock()
-  
 
+  drawRectangle(now.hour,24, 450)
+  drawRectangle(now.min,60, 300)
+  drawRectangle(now.sec,60, 200)
 
-  var h = now.sec
-  var m = now.min
-  var s = now.hours
-
-  // lastMinute = now.min;
-  // lastSecond = h;
-  // lastHour = s;
-
-  // fill(0, 0, 0, fade)
-
-push();
-translate(width / 2, height / 2);
-rotate(m*6);
-rectMode(CENTER);
-rect(0, 0, 300, 300);
-pop();
-
-push();
-translate(width / 2, height / 2);
-rotate(s*6);
-rectMode(CENTER);
-rect(0, 0, 450, 450);
-pop();
-
-push(); 
-translate(width / 2, height / 2);
-rotate(h*6);
-rectMode(CENTER);
-rect(0, 0, 200, 200);
-pop();
-
-
-
-
-// if (fade<0) fadeAmount=1; 
- 
-//   if (fade>255) fadeAmount=-10; 
- 
-//   fade += fadeAmount; 
-//   print(fade)
-
-
-//overpaint bg after one minute
-// if(lastMinute != now.min){
-//   push()
-//   background('black');
-//   pop()
-//   lastMinute = now.min;
-// }
-
-// //overpaint bg after one second
-// if(lastSecond != h){
-// background(b);
-// lastSecond = h;
-// }
-
-//overpaint bg after one hour
-// if(lastHour != s){
-// background(b);
-// lastHour = s;
-// }
-
-  console.log(h)
+  console.log(now.sec)
 
 
 }
