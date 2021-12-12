@@ -76,6 +76,7 @@ function drawRectangle(tick, maxTick, size) {
   } else {
     rgb = ((maxTick - tick) * 510) / maxTick;
   }
+  
   stroke(rgb, 255-rgb, rgb);
   translate(width / 2, height / 2);
   rotate(tick * 6);
