@@ -77,6 +77,7 @@ function drawAllGraphs() {
 function draw() {
   drawAllGraphs()
 
+  // Wenn die Maus außerhalb ist, wird das mappen auf das Diagramm nicht funktionieren
   if (mouseX > 30 && mouseX < 770 && mouseY > 30 && mouseY < 770) {
     // Mausposition auf das Diagramm umrechnen (genau anderes herum wie be drawGraph)
     let y = map(mouseY, 30, 770, maxVal, 0);
@@ -89,7 +90,7 @@ function draw() {
     rect(0, 0, 800, 30)
     // Neuen Text schreiben
     fill("white")
-    text(`Das ist ${data.get(nRow, 0)}: ${data.getNum(nRow, col)} % im ${data.columns[col]}`, 0, 20);
+    text(`This is ${data.get(nRow, 0)}: ${data.getNum(nRow, col)} % in ${data.columns[col]}`, 0, 20);
     // den passenden Graph in grün zeichnen
     stroke(0, 255, 0)
     noFill()
